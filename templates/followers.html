@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Followers{% endblock %}
+{% block body %}
+<br>
+<h1 align="center">Followers</h1>
+<br>
+<div class="container text-center">
+    {% for user1 in followers %}
+    <div class="row">
+        <div class="col">
+            <a href="/user/{{ user1.user_name }}" style="text-decoration: none;">
+                {{ user1.user_name }}
+            </a>
+        </div>
+        <div class="col-md-auto">
+        </div>
+        {% if user1.user_id in follow_list %}
+        <div class="col">
+            {% if user1.user_id != current_user.id %}
+            <a href="/unfollow/{{ user1.user_name }}" class="btn btn-outline-primary btn-sm" align="right">Unfollow</a>
+            {% endif %}
+        </div>
+        {% else %}
+        <div class="col">
+            {% if user1.user_id != current_user.id %}
+            <a href="/follow/{{ user1.user_name }}" class="btn btn-outline-primary btn-sm" align="right">Follow</a>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+    <div class="row">
+        <div class="col" style="padding: 0.5rem;"></div>
+    </div>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock %}

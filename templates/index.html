@@ -1,0 +1,25 @@
+{% extends "base.html" %} {% block title %}Hello{% endblock %} {% block body %}
+<br />
+<br />
+<h1 align="center">Welcome to Blog Lite</h1>
+<br />
+<div
+    class="d-grid gap-2 d-md-flex justify-content-md-center"
+    style="padding: 10rem"
+>
+    <button
+        class="btn btn-success btn-lg me-md-5"
+        type="button"
+        onclick="location.href='/login'"
+    >
+        Log In
+    </button>
+    <button
+        class="btn btn-primary btn-lg"
+        type="button"
+        onclick="location.href='/signup'"
+    >
+        Sign Up
+    </button>
+</div>
+{% endblock %}

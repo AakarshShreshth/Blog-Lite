@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block body %}
+<br />
+<h1 align="center">Home</h1>
+<br />
+<div id="posts" class="container" align="center">
+    {% if not posts %}
+    <h4>Your Home Page is Empty</h4>
+    {% endif %} {% for post in posts %}
+    <div class="card border-dark" style="width: 25rem">
+        <div class="card-header">
+            <a
+                href="/user/{{ post.User.username }}"
+                style="text-decoration: none"
+            >
+                {{ post.User.username }}
+            </a>
+        </div>
+        <div style="height: 1rem"></div>
+        <img
+            src="{{ url_for('get_img', id=post.id) }}"
+            class="card-img-top"
+            style="padding: 1rem"
+        />
+        <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">{{ post.description }}</p>
+        </div>
+        <div class="card-footer text-muted">{{ post.date_created }}</div>
+    </div>
+    <div style="height: 2rem"></div>
+    {% endfor %}
+</div>
+{% endblock %}
